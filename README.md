@@ -22,8 +22,14 @@ Scrapes laptop due dates from Alma and outputs them in a concise list to the ter
 
 ## Usage
 
-1. Open a terminal window, navigate to inside the folder containing `Laptop_Status.py`.
+1. Run `Laptop_Status.py` by either:
 
-2. Enter `python Laptop_Status.py` into the terminal.
+    a. Opening a terminal window, navigating to inside the folder containing `Laptop_Status.py`, and entering the command: `python Laptop_Status.py` OR
 
-3. The program will begin running it's own Chrome instance and output laptop info to the terminal.
+    b. (Windows) Double clicking on `Laptop_Status.py`
+
+2. The program will begin running it's own Chrome instance.
+
+3. Enter your UW NetID Credentials.
+
+4. The program will begin rapidly navigating Alma and will output laptop info to the terminal.
