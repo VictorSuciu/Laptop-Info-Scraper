@@ -68,7 +68,8 @@ try:
     time.sleep(1)
 except:
     is_multi_page = False
-      
+
+print 
 
 for i in range(25):
     if is_multi_page and i == 6:
