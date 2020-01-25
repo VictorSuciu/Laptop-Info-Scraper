@@ -105,7 +105,7 @@ for i in range(25):
     except TimeoutException:
         print(str(i+1) + ": IN")
     
-    print()
+    print
 
 
 driver.close()
