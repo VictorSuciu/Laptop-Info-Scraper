@@ -2,7 +2,7 @@
 
 ## Description
 
-Scrapes laptop due dates from Alma and outputs them in a concise list to the terminal. Tech desk employees have to manually click on each laptop to verify green-sheet due dates, and this program saves minutes of tedious clicking.
+This program scrapes laptop due dates from Alma and outputs them in a concise list to the terminal. Additionally, it notifies the employee of any due dates that are still at `23:59:00`. Tech desk employees have to manually click on each laptop in Alma to verify green-sheet due dates, so this program saves minutes of tedious clicking. 
 
 ## Dependencies
 

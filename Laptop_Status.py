@@ -48,10 +48,16 @@ def wait_to_load():
 def convert_to_12hr(time_str):
     time_list = time_str.split(':')
     hour = int(time_list[0])
+    am_or_pm = ' AM'
     if hour >= 12:
         hour = ((hour - 1) % 12) + 1
-        return str(hour) + time_str[2:] + ' PM'
-    return str(hour) + time_str + ' AM'
+        am_or_pm = ' PM'
+
+    final_time = str(hour) + time_str[2:-3] + am_or_pm
+    if hour < 10:
+        final_time = " " + final_time
+    
+    return final_time
 
 
 search_uwb_laptops()
@@ -82,29 +88,32 @@ for i in range(25):
 
     infolink_id = 'INPUT_SELENIUM_ID_list_ROW_' + str(id_subtractor - i) + '_COL_processTypeForDisplay'
     
+    laptop_num = str(i+1) + ": "
+    if i < 9:
+        laptop_num += " "
+
     try:
         WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.ID, infolink_id)))
         driver.execute_script('document.getElementById("' + infolink_id + '").click()')
-        WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, num_id)))
-        laptop_num = driver.find_element_by_id(num_id).get_attribute('innerHTML').split('#')[1]
 
         WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CSS_SELECTOR, duedate_selector)))
         duedate_info = driver.find_element_by_css_selector(duedate_selector).get_attribute('title').split(' ')
 
-
+        
+        
         date = duedate_info[0]
         time_due = convert_to_12hr(duedate_info[1])
 
         if(time_due == '11:59:00 PM'):
             time_due += ' <-- Change Due Date'
             
-        print(str(i+1) + ": " + date + " | " + time_due)
+        print(laptop_num + date + " | " + time_due)
 
         WebDriverWait(driver, 3).until(EC.element_to_be_clickable((By.CSS_SELECTOR, backbtn_selector)))
         driver.find_element_by_css_selector(backbtn_selector).click()
 
     except TimeoutException:
-        print(str(i+1) + ": IN")
+        print(laptop_num + "IN")
     
     print
 
