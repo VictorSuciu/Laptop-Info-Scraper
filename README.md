@@ -30,7 +30,7 @@ This program scrapes laptop due dates from Alma and outputs them in a concise li
 
     b. (Windows) Double clicking on `Laptop_Status.py`
 
-2. The program will begin running it's own Chrome instance.
+2. The program will begin running it's own Chrome instance and open the Alma login page.
 
 3. Enter your UW NetID Credentials.
 
