@@ -14,7 +14,7 @@ This program scrapes laptop due dates from Alma and outputs them in a concise li
 
 ## Installation
 
-1. Install [Selenium](https://pypi.org/project/selenium/) Python library: `pip install selenium`
+1. Install [Selenium](https://pypi.org/project/selenium/) Python package: `pip install selenium`
 
 2. Download the correct [chromedriver](https://chromedriver.chromium.org/downloads) executable for your operating system and version of Chrome.
 
