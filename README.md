@@ -1,6 +1,6 @@
 # Laptop Info Scraper
 
-[**Download Here**](https://drive.google.com/file/d/1haIZcSq0Uek8xs9n10Q4YohpjlPJGxOH/view?usp=sharing)
+[**Download Here**](https://github.com/VictorSuciu/README-Assets/tree/master/Laptop_Status)
 
 ## Description
 
@@ -8,7 +8,7 @@ This program scrapes laptop due dates from Alma and outputs them in a concise li
 
 ## User Instructions
 
-1. [Download](https://drive.google.com/file/d/1haIZcSq0Uek8xs9n10Q4YohpjlPJGxOH/view?usp=sharing) the application folder and unzip it.
+1. [Download](https://github.com/VictorSuciu/README-Assets/tree/master/Laptop_Status) the application folder and unzip it.
 
 2. Run Laptop_Status.exe by double clicking on it.
 
