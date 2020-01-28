@@ -18,7 +18,7 @@ This program scrapes laptop due dates from Alma and outputs them in a concise li
 
 5. The program will begin rapidly navigating Alma and will output laptop info to the terminal.
 
-## Dependencies
+## Development Dependencies
 
 * Python 2.7 or 3.4+
 
