@@ -34,7 +34,20 @@ This program scrapes laptop due dates from Alma and outputs them in a concise li
 
 3. Download `Laptop_Status.py` from this repository.
 
-4. Place `Laptop_Status.py` and the chromedriver executable in a common folder.
+4. Place `Laptop_Status.py` in a folder.
+
+5. Create another folder next to `Laptop_Status.py` called `driver` an place the chromedriver executable inside.
+
+The project directories should look like this:
+
+```
+project/
+|
+|-- Laptop_Status.py
+|-- driver/
+    |
+    |-- chromedriver.exe
+```
 
 ## Sample Output
 
