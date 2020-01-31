@@ -54,29 +54,29 @@ project/
 **Note:** The following information is completely fake, and was made up by me. None of the due dates or times reflect real information in the Alma system. This section is meant to showcase the format in which real information would be presented.
 
 ```
-1:  13/16/2015 |  6:00 PM
-2:  13/21/2015 | 11:59 PM <-- Change Due Date
-3:  13/05/2015 |  6:00 PM
-4:  13/04/2015 | 10:30 PM
-5:  IN
-6:  IN
-7:  13/15/2015 | 10:30 PM
-8:  13/14/2015 |  6:00 PM
-9:  13/23/2015 | 11:59 PM <-- Change Due Date
-10: 13/17/2015 |  6:00 PM
-11: 13/22/2015 | 10:30 PM
+ 1:  8-16 |  6:00 PM
+ 2:  8-21 | 11:59 PM <-- Change Due Date
+ 3:  8-05 |  6:00 PM
+ 4:  8-04 | 10:30 PM
+ 5: IN
+ 6: IN
+ 7:  8-15 | 10:30 PM
+ 8:  8-14 |  6:00 PM
+ 9:  8-23 | 11:59 PM <-- Change Due Date
+10:  8-17 |  6:00 PM
+11:  8-22 | 10:30 PM
 12: IN
-13: 13/12/2015 | 10:30 PM
-14: 13/17/2015 |  6:00 PM
-15: 13/02/2015 |  6:00 PM
-16: 13/10/2015 | 10:30 PM
+13:  8-12 | 10:30 PM
+14:  8-17 |  6:00 PM
+15:  8-02 |  6:00 PM
+16:  8-10 | 10:30 PM
 17: IN
-18: 13/24/2015 |  6:00 PM
-19: 13/19/2015 | 10:30 PM
+18:  8-24 |  6:00 PM
+19:  8-19 | 10:30 PM
 20: IN
 21: IN
-22: 13/18/2015 |  6:00 PM
-23: 13/14/2015 | 10:30 PM
+22:  8-18 |  6:00 PM
+23:  8-14 | 10:30 PM
 24: IN
 25: IN
 ```
