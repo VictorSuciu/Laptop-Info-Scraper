@@ -4,7 +4,20 @@
 
 ## Description
 
-This program scrapes laptop due dates from Alma and outputs them in a concise list to the terminal. Additionally, it notifies the employee of any due dates that are still at `23:59:00`. Tech desk employees have to manually click on each laptop in Alma to verify green-sheet due dates, so this program saves minutes of tedious clicking. 
+This program scrapes laptop due dates from Alma and outputs them in a concise list to the terminal. Tech desk employees have to manually click on each laptop in Alma to verify green-sheet due dates, so this program saves minutes of tedious clicking.
+
+### Features
+
+* Lists every laptop and its due date/time in order. If a laptop isn't checked out, it gets labeled as *IN*.
+
+* Displays all laptops due today in their own section
+
+* Displays all overdue laptops in their own section 
+
+* Strips down Alma information to the bare minimum. This allows techs to quickly read it at a glance.
+    * Dates are listed as [month]-[day] only
+    * Seconds from from the due time are removed
+    * Converts Alma's 24hr time to 12hr time to match the format on green sheets.
 
 ## User Instructions
 
@@ -56,8 +69,8 @@ project/
 ```
  1: 8-16  |  6:00 PM
  2: 8-21  | 10:30 PM
- 3: 8-05  |  6:00 PM
- 4: 8-04  | 10:30 PM
+ 3: 8-5   |  6:00 PM
+ 4: 8-4   | 10:30 PM
  5: IN
  6: IN
  7: 8-15  | 10:30 PM
@@ -68,7 +81,7 @@ project/
 12: IN
 13: 8-12  | 10:30 PM
 14: 8-17  |  6:00 PM
-15: 8-02  |  6:00 PM
+15: 8-2   |  6:00 PM
 16: 8-10  | 10:30 PM
 17: IN
 18: 8-24  |  6:00 PM
@@ -87,8 +100,8 @@ project/
    # 15
 
    Laptops Due Today:
-   # 13
-   # 14
+   # 8
+   # 23
 
 =======================
 ```
