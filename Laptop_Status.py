@@ -1,7 +1,7 @@
 
 import re
 import time
-
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -23,12 +23,20 @@ physical_selector = '#record_2_results > div > div.tabsContainer > div.tabsConta
 items_in_physical_selector = '#ADD_HIDERADIO_results_1_inventoryLookAheadphysicalUiHoldingResults_csearchbib_resultsnav_pane_physical_upper_actions_items > div > input'
 user_id = 'weblogin_netid'
 user_pass = 'weblogin_password'
+left_pad = '   '
 id_subtractor = 45
 
 driver = webdriver.Chrome(executable_path='driver/chromedriver')
 driver.get(alma_url)
 actions = ActionChains(driver)
 
+# FOR TESTING - DELETE WHEN DONE
+WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, user_id)))
+WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, user_pass)))
+driver.find_element_by_id(user_id).send_keys('vsuciu')
+driver.find_element_by_id(user_pass).send_keys('Publ1cClassWash1ngt0n')
+driver.find_element_by_id(user_pass).send_keys(Keys.ENTER)
+#-------------------------------
 
 def search_uwb_laptops():
     WebDriverWait(driver, 300).until(EC.presence_of_element_located((By.CSS_SELECTOR, search_bar_selector)))
@@ -69,21 +77,31 @@ def convert_to_12hr(time_str):
     if hour >= 12:
         hour = ((hour - 1) % 12) + 1
         am_or_pm = ' PM'
-
-    final_time = str(hour) + time_str[2:-3] + am_or_pm
     if hour < 10:
-        final_time = " " + final_time
-    
-    return final_time
+        am_or_pm = " " + am_or_pm
 
-def format_date(unformatted):
-    date_list = unformatted.split('/')
-    month = str(int(date_list[0]))
-    day = date_list[1]
-    if len(month) == 1:
-        month = " " + month
+    return str(hour) + time_str[2:-3] + am_or_pm
+
+def format_date(date):
+    month = str(date.month)
+    day = str(date.day)
+    if date.month < 10:
+        day += " "
+    if date.day < 10:
+        day += " "
     return month + '-' + day
 
+def is_due_today(due_date):
+    today = datetime.today()
+    return due_date.month == today.month and due_date.day == today.day
+
+def is_late(due_date):
+    today = datetime.today()
+    if (today.year > due_date.year) or \
+       (today.year == due_date.year and today.month > due_date.month) or \
+       (today.year == due_date.year and today.month == due_date.month and today.day > due_date.day):
+        return True
+    return False
 
 def click_next_page():
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
@@ -92,11 +110,27 @@ def click_next_page():
     driver.execute_script('document.querySelector("' + page2_selector + '").click()')
     time.sleep(3)
 
+
+output_stack = []
+late_laptops = []
+due_today_laptops = []
+#24: 2-3   | 10:00 PM
+#====================
 def print_stack(stack):
     for i in range(len(stack)):
-        print(stack.pop()),
+        print(stack.pop())
 
+def print_notifications():
+    late_laptops.sort()
+    due_today_laptops.sort()
+    print('=======================')
+    print('\n' + left_pad + 'Late Laptops:')
+    [print(left_pad + '# ' + str(num)) for num in late_laptops]
+    print('\n' + left_pad + 'Laptops Due Today:')
+    [print(left_pad + '# ' + str(num)) for num in due_today_laptops]
+    print('\n=======================\n')
 
+print('\n')
 
 search_uwb_laptops()
 click_items()
@@ -114,7 +148,6 @@ except:
     is_multi_page = False
 
 
-output_stack = []
 count = -1
 already_next_page = False
 
@@ -132,7 +165,12 @@ while(True):
         laptop_num = driver.find_element_by_id(table_num_id).get_attribute('innerHTML').split('#')
         if len(laptop_num) != 2:
             continue
-        laptop_num = str(int(laptop_num[1]))
+            
+        laptop_num = int(laptop_num[1])
+        laptop_num_str = str(laptop_num)
+        if laptop_num < 10:
+            laptop_num_str = ' ' + laptop_num_str
+
     except:
         print_stack(output_stack)
         if is_multi_page and not already_next_page:
@@ -152,18 +190,25 @@ while(True):
         WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CSS_SELECTOR, duedate_selector)))
         duedate_info = driver.find_element_by_css_selector(duedate_selector).get_attribute('title').split(' ')
 
-        date = format_date(duedate_info[0])
+        due_date = datetime.strptime(duedate_info[0], '%m/%d/%Y')
+        date = format_date(due_date)
         time_due = convert_to_12hr(duedate_info[1])
 
-        if(time_due == '11:59 PM'):
-            time_due += ' <-- Change Due Date'
-           
-        output_stack.append(laptop_num + ': ' + date + ' | ' + time_due + '\n')
+        if is_late(due_date):
+            late_laptops.append(laptop_num)
+        elif is_due_today(due_date):
+            due_today_laptops.append(laptop_num)
+        
+        output_stack.append(left_pad + laptop_num_str + ': ' + date + ' | ' + time_due + '\n')
 
         WebDriverWait(driver, 3).until(EC.element_to_be_clickable((By.CSS_SELECTOR, backbtn_selector)))
         driver.find_element_by_css_selector(backbtn_selector).click()
 
     except:
-        output_stack.append(laptop_num + ': IN\n')
+        output_stack.append(left_pad + laptop_num_str + ': IN\n')
+
+print_notifications()
 
 driver.close()
+
+
