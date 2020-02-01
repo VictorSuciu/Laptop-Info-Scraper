@@ -107,8 +107,7 @@ def click_next_page():
 output_stack = []
 late_laptops = []
 due_today_laptops = []
-#24: 2-3   | 10:00 PM
-#====================
+
 def print_stack(stack):
     for i in range(len(stack)):
         print(stack.pop())
@@ -117,10 +116,15 @@ def print_notifications():
     late_laptops.sort()
     due_today_laptops.sort()
     print('=======================')
+
     print('\n' + left_pad + 'Late Laptops:')
-    [print(left_pad + '# ' + str(num)) for num in late_laptops]
+    for num in late_laptops:
+        print(left_pad + '# ' + str(num))
+    
     print('\n' + left_pad + 'Laptops Due Today:')
-    [print(left_pad + '# ' + str(num)) for num in due_today_laptops]
+    for num in due_today_laptops:
+        print(left_pad + '# ' + str(num))
+    
     print('\n=======================\n')
 
 print('\n')
