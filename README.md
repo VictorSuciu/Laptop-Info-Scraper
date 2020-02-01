@@ -19,6 +19,50 @@ This program scrapes laptop due dates from Alma and outputs them in a concise li
     * Seconds from from the due time are removed
     * Converts Alma's 24hr time to 12hr time to match the format on green sheets.
 
+## Sample Output
+
+**Note:** The following information is completely fake, and was made up by me. None of the due dates or times reflect real information in the Alma system. This section is meant to showcase the format in which real information would be presented.
+
+```
+    1: 8-16  |  6:00 PM
+    2: 8-21  | 10:30 PM
+    3: 8-5   |  6:00 PM
+    4: 8-4   | 10:30 PM
+    5: IN
+    6: IN
+    7: 8-15  | 10:30 PM
+    8: 8-14  |  6:00 PM
+    9: 8-23  | 10:30 PM
+   10: 8-17  |  6:00 PM
+   11: 8-22  | 10:30 PM
+   12: IN
+   13: 8-12  | 10:30 PM
+   14: 8-17  |  6:00 PM
+   15: 8-2   |  6:00 PM
+   16: 8-10  | 10:30 PM
+   17: IN
+   18: 8-24  |  6:00 PM
+   19: 8-19  | 10:30 PM
+   20: IN
+   21: IN
+   22: 8-18  |  6:00 PM
+   23: 8-14  | 10:30 PM
+   24: IN
+   25: IN
+
+=======================
+
+   Late Laptops:
+   # 3
+   # 15
+
+   Laptops Due Today:
+   # 8
+   # 23
+
+=======================
+```
+
 ## User Instructions
 
 1. [Download](https://github.com/VictorSuciu/README-Assets/tree/master/Laptop_Status) the application folder and unzip it.
@@ -60,48 +104,4 @@ project/
 |-- driver/
     |
     |-- chromedriver.exe
-```
-
-## Sample Output
-
-**Note:** The following information is completely fake, and was made up by me. None of the due dates or times reflect real information in the Alma system. This section is meant to showcase the format in which real information would be presented.
-
-```
- 1: 8-16  |  6:00 PM
- 2: 8-21  | 10:30 PM
- 3: 8-5   |  6:00 PM
- 4: 8-4   | 10:30 PM
- 5: IN
- 6: IN
- 7: 8-15  | 10:30 PM
- 8: 8-14  |  6:00 PM
- 9: 8-23  | 10:30 PM
-10: 8-17  |  6:00 PM
-11: 8-22  | 10:30 PM
-12: IN
-13: 8-12  | 10:30 PM
-14: 8-17  |  6:00 PM
-15: 8-2   |  6:00 PM
-16: 8-10  | 10:30 PM
-17: IN
-18: 8-24  |  6:00 PM
-19: 8-19  | 10:30 PM
-20: IN
-21: IN
-22: 8-18  |  6:00 PM
-23: 8-14  | 10:30 PM
-24: IN
-25: IN
-
-=======================
-
-   Late Laptops:
-   # 3
-   # 15
-
-   Laptops Due Today:
-   # 8
-   # 23
-
-=======================
 ```
