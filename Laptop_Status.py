@@ -30,13 +30,6 @@ driver = webdriver.Chrome(executable_path='driver/chromedriver')
 driver.get(alma_url)
 actions = ActionChains(driver)
 
-# FOR TESTING - DELETE WHEN DONE
-WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, user_id)))
-WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, user_pass)))
-driver.find_element_by_id(user_id).send_keys('vsuciu')
-driver.find_element_by_id(user_pass).send_keys('Publ1cClassWash1ngt0n')
-driver.find_element_by_id(user_pass).send_keys(Keys.ENTER)
-#-------------------------------
 
 def search_uwb_laptops():
     WebDriverWait(driver, 300).until(EC.presence_of_element_located((By.CSS_SELECTOR, search_bar_selector)))
