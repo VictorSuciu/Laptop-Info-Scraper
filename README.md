@@ -21,7 +21,7 @@ This program scrapes laptop due dates from Alma and outputs them in a concise li
 
 ## Sample Output
 
-**Note:** The following information is completely fake, and was made up by me. None of the due dates or times reflect real information in the Alma system. This section is meant to showcase the format in which real information would be presented.
+**Note:** The following information is completely fake, and was made up by me. None of the due dates or times reflect real information in the Alma system. **This section is only meant to showcase the format in which real information would be presented.**
 
 ```
     1: 8-16  |  6:00 PM
